@@ -5,10 +5,23 @@ const bcrypt = require('bcrypt');
 const validatorSchema = require('../schemas/validate.schema');
 const { registerValidator, loginValidator } = require('../schemas/auth.schema');
 const User = require('../models/user.schema');
-const accessToken = require('../jwt/accessToken');
-const TOKEN = require('../jwt/accessToken');
 const verifyToken = require('../jwt/verifyToken');
 const route = express.Router();
+
+
+const TOKEN = 'secretNewToken';
+
+const accessToken = (payload) => {
+    return new Promise((resolve, reject) => {
+        jwt.sign(payload, TOKEN, {
+            expiresIn: '1d',
+        },
+        (err, token) => {
+            if(err) reject(err)
+            resolve(token)
+        })
+    })
+}
 
 // Configuracion de enviar correo de confirmacion
 const transporter = nodemailer.createTransport({
