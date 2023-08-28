@@ -57,7 +57,7 @@ route.post('/register', validatorSchema(registerValidator), async (req, res) => 
         from: 'eventsbrews@gmail.com',
         to: `${email}`,
         subject: 'Confirmación de correo',
-        html: '<h1>Gracias por registrarte! UwU</h1> <br> <h1>EventsBrew</h1> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL14vd2g6r-QSkK6NRJ9Rdc2svG3auTMQuORMe9SxkCJf2xJRsSCPaVOZAnsYVCSny7VY&usqp=CAU">'
+        html: '<h1>Gracias por registrarte! UwU</h1> <br> <h1>EventsBrew</h1>'
     }).then((res) => { console.log(res); }).catch((err) => { console.log(err); });
 
     const token = await accessToken({id: saveUser._id});
